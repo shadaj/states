@@ -1,1 +1,5 @@
-This file was created by IntelliJ IDEA 10.0.1 for binding GitHub repository
+This project is created to help me (and other 5th graders) in studying state names, capitals, and abbreviations.
+
+It also helps me practice a new computer programming language I am learning: Scala.
+
+Currently, I am able to run it through IntelliJ IDEA with the Scala plugin, but I hope to provide a simpler way.
