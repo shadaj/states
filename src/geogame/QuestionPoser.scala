@@ -11,8 +11,8 @@ package geogame
 object QuestionPoser {
   def ask(state: State) = {
     val capital = readLine("What is the capital of " + state.name + ": ")
-    val capitalResponse = capital match {
-      case state.capital => ("You're right!", true)
+    val capitalResponse = capital.toLowerCase match {
+      case state.capital.toLowerCase => ("You're right!", true)
       case _ => ("The correct answer is: " + state.capital, false)
     }
     println(capitalResponse._1)
@@ -27,8 +27,16 @@ object QuestionPoser {
   }
 
   def ask(states: List[State]) {
+    var wrongStates = List[State]
     for (state <- states) {
-      ask(state)
+      if (!ask(state)) {
+        state :: wrongStates
+      }
+      ask(reverse(wrongStates))
+      if (states.length == 50) {
+        ask(states)
+        return
+      }
     }
   }
 }
