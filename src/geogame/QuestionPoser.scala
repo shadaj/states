@@ -10,33 +10,35 @@ package geogame
 
 object QuestionPoser {
   def ask(state: State) = {
-    val capital = readLine("What is the capital of " + state.name + ": ")
-    val capitalResponse = capital.toLowerCase match {
-      case state.capital.toLowerCase => ("You're right!", true)
-      case _ => ("The correct answer is: " + state.capital, false)
+    val capital = readLine("What is the capital of " + state.name + ": ").toLowerCase
+    val capitalResponse = if (capital == state.capital.toLowerCase) {
+      ("You're right!", true)
+    } else {
+      ("The correct answer is: " + state.capital, false)
     }
     println(capitalResponse._1)
 
-    val abbreviation = readLine("What is the abbreviation of " + state.name + ": ")
-    val abbreviationResponse = abbreviation match {
-      case state.abbreviation => ("You're right!", true)
-      case _ => ("The correct answer is: " + state.abbreviation, false)
+    val abbreviation = readLine("What is the abbreviation of " + state.name + ": ").toLowerCase
+    val abbreviationResponse = if (abbreviation == state.abbreviation.toLowerCase) {
+      ("You're right!", true)
+    } else {
+      ("The correct answer is: " + state.abbreviation, false)
     }
     println(abbreviationResponse._1)
     capitalResponse._2 && abbreviationResponse._2
   }
 
   def ask(states: List[State]) {
-    var wrongStates = List[State]
+    var wrongStates = List[State]()
     for (state <- states) {
       if (!ask(state)) {
-        state :: wrongStates
+        wrongStates = state :: wrongStates
       }
-      ask(reverse(wrongStates))
-      if (states.length == 50) {
-        ask(states)
-        return
-      }
+    }
+    ask(wrongStates.reverse)
+    if (states.length == 50) {
+      ask(states)
+      return
     }
   }
 }
