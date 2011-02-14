@@ -4,6 +4,7 @@ import swing._
 import event._
 import geogame.{State, USA}
 import java.awt.Font
+import java.awt.Color
 
 /**
  * Created by IntelliJ IDEA.
@@ -50,6 +51,7 @@ class StatesComponent extends BoxPanel(Orientation.Vertical) {
   contents.foreach(_.font = defaultFont)
   whatIsState.font = new Font("SansSerif", Font.BOLD, 20)
 
+
   border = Swing.EmptyBorder(30, 20, 20, 20)
 
   listenTo(thisIsMyAnswer)
@@ -60,15 +62,19 @@ class StatesComponent extends BoxPanel(Orientation.Vertical) {
       var abbreviationCorrect = true
       val currentState = states(i)
       if (capital.text.trim == currentState.capital) {
+        capitalReply.foreground = Color.green
         capitalReply.text = "You got the capital correct!"
       } else {
+        capitalReply.foreground = Color.red
         capitalReply.text = "The capital is: " + currentState.capital
         capitalCorrect = false
 
       }
       if (abbreviation.text.trim == currentState.abbreviation) {
+        abbreviationReply.foreground = Color.green
         abbreviationReply.text = "You got the abbreviation correct!"
       } else {
+        abbreviationReply.foreground = Color.red
         abbreviationReply.text = "The abbreviation is: " + currentState.abbreviation
         abbreviationCorrect = false
       }
