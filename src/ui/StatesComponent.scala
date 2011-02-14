@@ -3,6 +3,7 @@ package ui
 import swing._
 import event._
 import geogame.{State, USA}
+import java.awt.Font
 
 /**
  * Created by IntelliJ IDEA.
@@ -16,8 +17,8 @@ class StatesComponent extends BoxPanel(Orientation.Vertical) {
   var i = 0
   var states = USA.states
   var wrongStates = List[State]()
-  val capitalReply = new Label
-  val abbreviationReply = new Label
+  val capitalReply = new Label(" ")
+  val abbreviationReply = new Label(" ")
 
   object capital extends TextField {
     columns = 5
@@ -31,18 +32,24 @@ class StatesComponent extends BoxPanel(Orientation.Vertical) {
     text = "Check the answer"
   }
   var whatIsState = new Label {
-    text = "The state is: " + states(i).name
+    text = "For state: " + states(i).name
   }
 
-
+  val defaultFont = new Font("SansSerif", Font.PLAIN, 16)
   contents += whatIsState
-  contents += new Label("Write the capital here: ")
+  contents += new Label("Enter the capital: ")
   contents += capital
-  contents += new Label("Write the abbreviation here: ")
-  contents += abbreviation
-  contents += thisIsMyAnswer
   contents += capitalReply
+  contents += new Label("Enter the abbreviation: ")
+  contents += abbreviation
   contents += abbreviationReply
+  contents += thisIsMyAnswer
+
+
+
+  contents.foreach(_.font = defaultFont)
+  whatIsState.font = new Font("SansSerif", Font.BOLD, 20)
+
   border = Swing.EmptyBorder(30, 20, 20, 20)
 
   listenTo(thisIsMyAnswer)

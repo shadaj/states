@@ -60,5 +60,4 @@ object USA {
     State("West Virginia", "Charleston", "WV"),
     State("Wisconsin", "Madison", "WI"),
     State("Wyoming", "Cheyenne", "WY"))
-
 }
