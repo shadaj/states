@@ -14,7 +14,7 @@ import java.awt.Color
  * To change this template use File | Settings | File Templates.
  */
 
-class StatesComponent extends BoxPanel(Orientation.Vertical) {
+class StatesComponent(applet: StatesApplet) extends BoxPanel(Orientation.Vertical) {
   var i = 0
   var states = USA.states
   var wrongStates = List[State]()
@@ -71,7 +71,7 @@ class StatesComponent extends BoxPanel(Orientation.Vertical) {
 
       }
       if (abbreviation.text.trim == currentState.abbreviation) {
-        abbreviationReply.foreground = Color.green
+        abbreviationReply.foreground = Color.orange
         abbreviationReply.text = "You got the abbreviation correct!"
       } else {
         abbreviationReply.foreground = Color.red

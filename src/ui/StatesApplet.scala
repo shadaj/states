@@ -11,12 +11,22 @@ import swing._
  */
 
 class StatesApplet extends Applet {
+  def showMain {
+    ui.contents = new MainComponent(this)
+  }
+
+  def showHowto {
+    ui.contents = new HowToComponent(this)
+  }
+
+  def showGame {
+    ui.contents = new StatesComponent(this)
+  }
 
   object ui extends UI {
 
-    contents = new StatesComponent
 
-    def init(): Unit = {}
+    def init(): Unit = {showMain}
   }
 
 }

@@ -1,11 +1,11 @@
 <component name="libraryTable">
-  <library name="states">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/scala-library.jar!/" />
-      <root url="jar://$PROJECT_DIR$/scala-swing.jar!/" />
-      <root url="jar://$PROJECT_DIR$/states.jar!/" />
-    </CLASSES>
-    <JAVADOC />
-    <SOURCES />
-  </library>
+    <library name="states">
+        <CLASSES>
+            <root url="jar://$PROJECT_DIR$/scala-library.jar!/"/>
+            <root url="jar://$PROJECT_DIR$/scala-swing.jar!/"/>
+            <root url="jar://$PROJECT_DIR$/states.jar!/"/>
+        </CLASSES>
+        <JAVADOC/>
+        <SOURCES/>
+    </library>
 </component>
